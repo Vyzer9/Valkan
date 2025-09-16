@@ -6,4 +6,8 @@ Valkan is a fast and robust network scanner and vulnerability explorer, develope
 
 <img width="1329" height="863" alt="image" src="https://github.com/user-attachments/assets/2641ca31-d693-4d4d-95b4-6989bce280e4" />
 
+<img width="1034" height="729" alt="image" src="https://github.com/user-attachments/assets/fae332f9-36e4-4b42-b682-b29b81f1a13a" />
+
+
+
 # under maintenance
