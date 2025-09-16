@@ -2,20 +2,28 @@ package ui
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"os"
 	"os/exec"
 	"runtime"
 	"strings"
+	"time"
+
+	"github.com/Vyzer9/Valkan/Valkan/Internal/detection"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/plugins"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/scanner"
 )
 
 // Cores ANSI
 const (
 	Reset  = "\033[0m"
 	Red    = "\033[31m"
-	Bold   = "\033[1m"
+	Green  = "\033[32m"
 	Yellow = "\033[33m"
 	Blue   = "\033[34m"
+	Purple = "\033[35m"
+	Bold   = "\033[1m"
 )
 
 // Dragão em vermelho, mais "sério"
@@ -39,13 +47,12 @@ _#/|##########/\######(   /\   )######/\##########|\#_
 `
 
 const valkanText = `
- __   __  _______  ___      ___   _  _______  __    _
-|  | |  ||   _   ||   |    |   | | ||   _   ||  |  | |
-|  |_|  ||  |_|  ||   |    |   |_| ||  |_|  ||   |_| |
-|       ||       ||   |    |      _||       ||       |
-|       ||       ||   |___ |     |_ |       ||  _    |
- |     | |   _   ||       ||    _  ||   _   || | |   |
-  |___|  |__| |__||_______||___| |_||__| |__||_|  |__|
+██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗ ███╗   ██╗
+██║   ██║██╔══██╗██║     ██║ ██╔╝██╔══██╗████╗  ██║
+██║   ██║███████║██║     █████╔╝ ███████║██╔██╗ ██║
+╚██╗ ██╔╝██╔══██║██║     ██╔═██╗ ██╔══██║██║╚██╗██║
+ ╚████╔╝ ██║  ██║███████╗██║  ██╗██║  ██║██║ ╚████║
+  ╚═══╝  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
 
 `
 
@@ -59,7 +66,7 @@ func ShowBanner() {
 }
 
 func printSystemInfo() {
-	fmt.Println(Yellow + "───────────────────────────────────────────────" + Reset)
+	fmt.Println("───────────────────────────────────────────────")
 	fmt.Printf(" Sistema: %s\n", runtime.GOOS)
 	fmt.Printf(" Arquitetura: %s\n", runtime.GOARCH)
 
@@ -75,7 +82,7 @@ func printSystemInfo() {
 		}
 	}
 
-	fmt.Println(Yellow + "───────────────────────────────────────────────" + Reset)
+	fmt.Println("───────────────────────────────────────────────")
 }
 
 func ShowMenu() {
@@ -83,31 +90,110 @@ func ShowMenu() {
 
 	for {
 		fmt.Println()
-		fmt.Println(Bold + "Menu:" + Reset)
-		fmt.Println("1) Scanner")
-		fmt.Println("2) Help")
-		fmt.Println("3) Sair")
-		fmt.Print("Escolha uma opção: ")
+		fmt.Println(Yellow + Bold + "Menu:" + Reset)
+		fmt.Println(Yellow + "1) Scanner" + Reset)
+		fmt.Println(Yellow + "2) Help" + Reset)
+		fmt.Println(Yellow + "3) Sair" + Reset)
+		fmt.Print(Reset + "Escolha uma opção: " + Reset)
 
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(input)
 
 		switch input {
 		case "1":
+			// Escolher protocolo TCP/UDP
+			fmt.Println()
+			fmt.Println(Yellow + Bold + "Escolha o protocolo:" + Reset)
+			fmt.Println(Yellow + "1) TCP" + Reset)
+			fmt.Println(Yellow + "2) UDP" + Reset)
+			fmt.Print(Reset + "Protocolo: " + Reset)
+
+			protoOption, _ := reader.ReadString('\n')
+			protoOption = strings.TrimSpace(protoOption)
+
+			var protocol string
+			switch protoOption {
+			case "1":
+				protocol = "tcp"
+			case "2":
+				protocol = "udp"
+			default:
+				fmt.Println(Blue + "Protocolo inválido, voltando ao menu." + Reset)
+				continue
+			}
+
+			// Escolher tipo de scan (portas)
+			fmt.Println()
+			fmt.Println(Yellow + Bold + "Escolha o tipo de scan:" + Reset)
+			fmt.Println(Yellow + "1) Scan rápido (portas 1-1024)" + Reset)
+			fmt.Println(Yellow + "2) Scan completo (portas 1-65535)" + Reset)
+			fmt.Print(Reset + "Opção: " + Reset)
+
+			scanOption, _ := reader.ReadString('\n')
+			scanOption = strings.TrimSpace(scanOption)
+
+			var startPort, endPort int
+			switch scanOption {
+			case "1":
+				startPort, endPort = 1, 1024
+			case "2":
+				startPort, endPort = 1, 65535
+			default:
+				fmt.Println(Blue + "Opção inválida, voltando ao menu." + Reset)
+				continue
+			}
+
+			// Solicitar host/IP
 			fmt.Print("\nDigite o IP ou host para escanear: ")
 			host, _ := reader.ReadString('\n')
 			host = strings.TrimSpace(host)
 
 			if host == "" {
-				fmt.Println(Red + "Host inválido, voltando ao menu." + Reset)
+				fmt.Println(Blue + "Host inválido, voltando ao menu." + Reset)
 				continue
 			}
 
-			// Aqui você pode chamar seu scanner, exemplo:
-			// scanner.StartScan(host)
-			fmt.Printf("\nIniciando scan no host %s...\n", host)
-			// Placeholder: simular scan
+			fmt.Printf("\nIniciando scan no host %s, portas %d-%d, protocolo %s...\n", host, startPort, endPort, strings.ToUpper(protocol))
+
+			ctx := context.Background()
+			timeout := 2 * time.Second
+			concurrency := 100
+
+			results := scanner.ScanRangeConcurrent(ctx, host, startPort, endPort, timeout, protocol, concurrency)
+
+			fmt.Println()
+			fmt.Println(Blue + Bold + "Resultados do Scan:" + Reset)
+
+			openCount := 0
+			for _, res := range results {
+				if res.Open {
+					openCount++
+					service := detection.DetectService(res.Banner)
+					fmt.Printf(Green+"Porta %d aberta (%s) - Serviço detectado: %s\n"+Reset, res.Port, res.Protocol, service)
+
+					if service == "HTTP" && protocol == "tcp" {
+						banner, err := plugins.GrabHTTPBanner(fmt.Sprintf("%s:%d", host, res.Port), timeout)
+						if err == nil {
+							fmt.Printf(Purple+"Banner HTTP detalhado:\n%s\n"+Reset, banner)
+						}
+					}
+				}
+			}
+
+			if openCount == 0 {
+				fmt.Println(Yellow + "Nenhuma porta aberta encontrada." + Reset)
+			}
+
 			fmt.Println("Scan finalizado.\n")
+
+			// Salvar resultados em arquivo
+			filename := "resultados_scan.txt"
+			err := saveResultsToFile(results, filename)
+			if err != nil {
+				fmt.Println(Red, "Erro ao salvar resultados:", err, Reset)
+			} else {
+				fmt.Println(Green, "Resultados salvos em", filename, Reset)
+			}
 
 		case "2":
 			showHelp()
@@ -122,14 +208,38 @@ func ShowMenu() {
 	}
 }
 
+func saveResultsToFile(results []scanner.PortScanResult, filename string) error {
+	file, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	for _, res := range results {
+		status := "fechada"
+		if res.Open {
+			status = "aberta"
+		}
+		line := fmt.Sprintf("Porta %d (%s): %s - %s\n", res.Port, res.Protocol, status, res.Reason)
+		_, err := file.WriteString(line)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func showHelp() {
 	fmt.Println(`
 ` + Bold + `VALKAN - Network Recon Tool - Help` + Reset + `
 
 1) Scanner
-   - Escaneia portas TCP abertas no host alvo.
+   - Escaneia portas TCP ou UDP abertas no host alvo.
    - Informe IP ou domínio.
-   - Busca portas abertas e tenta identificar serviços.
+   - Escolha protocolo TCP ou UDP.
+   - Busca portas abertas e tenta identificar serviços (apenas TCP).
+   - Salva resultados em arquivo "resultados_scan.txt".
 
 2) Help
    - Mostra este menu de ajuda.
@@ -141,6 +251,7 @@ Dicas:
 - Use IPs válidos (ex: 192.168.1.1) ou domínios (ex: example.com).
 - Scan rápido: portas comuns (1-1024).
 - Scan completo: todas as portas (1-65535), pode demorar.
+- UDP scan não identifica serviços nem banner.
 - Consulte a documentação para mais informações.
 
 `)
