@@ -8,10 +8,13 @@ import (
 	"time"
 
 	"github.com/Vyzer9/Valkan/Valkan/Internal/scanner"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/ui"
 	"github.com/spf13/cobra"
 )
 
 func main() {
+	ui.ShowBanner()
+	ui.ShowMenu()
 	var host string
 	var ports string
 	var timeout int
@@ -19,18 +22,22 @@ func main() {
 	var protocol string
 	var concurrency int
 
+	// Comando raiz
 	var rootCmd = &cobra.Command{
 		Use:   "valkan",
 		Short: "Valkan - scanner de rede e exploração",
 		Long:  "Valkan é uma ferramenta para scan de portas, exploração de vulnerabilidades e mais.",
 	}
 
+	// Comando de scan
 	var scanCmd = &cobra.Command{
 		Use:   "scan",
 		Short: "Faz scan de portas em um host",
 		Run: func(cmd *cobra.Command, args []string) {
-			startTime := time.Now()
+			// Exibir banner com info do sistema
+			ui.ShowBanner()
 
+			startTime := time.Now()
 			ctx, cancel := context.WithCancel(context.Background())
 			defer cancel()
 
@@ -75,6 +82,7 @@ func main() {
 		},
 	}
 
+	// Flags do comando scan
 	scanCmd.Flags().StringVarP(&host, "host", "H", "", "Host alvo (obrigatório)")
 	scanCmd.Flags().StringVarP(&ports, "ports", "p", "1-1024", "Faixa de portas para scan (ex: 1-1024)")
 	scanCmd.Flags().IntVarP(&timeout, "timeout", "t", 500, "Timeout em milissegundos para cada porta")
@@ -83,6 +91,9 @@ func main() {
 	scanCmd.Flags().IntVarP(&concurrency, "concurrency", "c", 100, "Número de goroutines concorrentes para scan")
 	scanCmd.MarkFlagRequired("host")
 
+	// Adiciona comando ao root
 	rootCmd.AddCommand(scanCmd)
+
+	// Executa CLI
 	rootCmd.Execute()
 }

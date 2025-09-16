@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Valkan
+Comment=Scanner de portas e vulnerabilidades
+Exec=gnome-terminal -- /home/vyzer9/Documentos/Valkan/Valkan/Valkan/cmd/valkan-linux scan --host 127.0.0.1
+Icon=/home/vyzer9/Downloads/ValkanLogo.png
+Terminal=false
+Type=Application
+Categories=Network;Security;Utility;
