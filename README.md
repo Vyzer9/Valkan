@@ -69,6 +69,39 @@ The architecture is **modular**, **concurrent**, and **extensible**, designed fo
 - **📦 Future Web UI (In Development)**  
   A user-friendly web dashboard is under development (started on `2025-09-06`) for managing scans and visualizing results.
 
+## ⚙️ Download
+
+### 1. Download in WebSIte
+
+<img width="933" height="469" alt="image" src="https://github.com/user-attachments/assets/91e08e61-8339-4279-84df-28fe1b0b360d" />
+
+### 2. File Valkan
+A download will come to your files
+
+<img width="893" height="547" alt="image" src="https://github.com/user-attachments/assets/ebd29f5c-0f9a-4413-ab67-97a3b8ab433e" />
+
+## 💻 Run Valkan
+
+### 1. List Itens
+When you arrive at the terminal, you will direct the terminal to where the Valkan file is and use the command:
+```bash
+ls
+```
+This command is used to list items.
+
+<img width="642" height="466" alt="image" src="https://github.com/user-attachments/assets/a2088ae6-e99f-457d-a886-7dbbadf6633e" />
+
+### 2. Command
+You will enter the command:
+```bash
+./valkan
+```
+and finish, congratulations 
+
+<img width="1069" height="662" alt="image" src="https://github.com/user-attachments/assets/aeed9c80-c659-4274-8a2c-deb86df8f88a" />
+
+---
+
 ## 🤝 Contribution Guidelines
 
 Contributions are welcome, provided they align with the educational goals of the project.  
@@ -82,13 +115,10 @@ To contribute:
 
 ## 📷 General Screenshot
 
-### Terminal
 <img width="1329" height="863" alt="image" src="https://github.com/user-attachments/assets/2641ca31-d693-4d4d-95b4-6989bce280e4" />
 
 <img width="1034" height="729" alt="image" src="https://github.com/user-attachments/assets/fae332f9-36e4-4b42-b682-b29b81f1a13a" />
 
-### Banner
-<img width="1536" height="1024" alt="ChatGPT Image Sep 14, 2025, 01_37_34 PM" src="https://github.com/user-attachments/assets/7df8e01a-14ca-4910-951a-be7541838ce4" />
 
 ## 📄 License
 This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).  
