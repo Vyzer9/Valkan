@@ -4,11 +4,11 @@
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge&logo=github)
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue?style=for-the-badge&logo=opensourceinitiative)
 
-> ⚠️ **Disclaimer**
-> **Valkan is a real tool**, developed for legitimate **network scanning** and **vulnerability exploitation** activities in controlled and authorized environments.
-> Its use is exclusively for **offensive security testing and auditing** purposes with explicit permission.
-> **Unauthorized or illegal use is prohibited** by applicable laws, including the [Marco Civil da Internet (Law No. 12,965/2014)](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm).
-> The author **is not responsible** for any misuse or damage caused by this tool.
+> ⚠️ **Disclaimer**  
+> **Valkan is a real and powerful tool**, designed specifically for **legitimate network scanning** and **vulnerability exploitation** in **controlled and authorized environments**.  
+> Its usage is strictly limited to **offensive security testing, ethical hacking, and auditing** with **explicit permission** from system owners.  
+> **Any unauthorized or illegal use is strictly prohibited** and may violate applicable laws, including the [Marco Civil da Internet (Law No. 12,965/2014)](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm).  
+> The author **bears no responsibility** for misuse, damages, or illegal activities resulting from this tool.
 
 ---
 
