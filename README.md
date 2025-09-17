@@ -16,6 +16,20 @@
 
 ---
 
+## 📌 Table of Contents
+
+- [🎯 Objective](#-objective)
+- [🌐 Website](#-website)
+- [🧰 Technologies](#-technologies)
+- [🏗️ Architecture](#️-architecture)
+- [⚙️ Download](#️-download)
+- [📜 Run Valkan](#-run-valkan)
+- [🤝 Contribution Guidelines](#-contribution-guidelines)
+- [📄 License](#-license)
+- [📬 Contact](#-contact)
+
+---
+
 ## 🎯 Objective
 
 This project provides a **functional tool** for:
@@ -24,6 +38,9 @@ This project provides a **functional tool** for:
 - Modular engine with components such as **Reporter**, **Detector**, **HTTP module**, and **CLI-based terminal interface**.
 - Built in **Go (Golang)** for high performance, **concurrent scanning**, and low memory usage.
 - Designed for **real-world offensive security assessments** in authorized and controlled environments.
+
+## 🌐 Website
+https://valkan.vercel.app/
 
 ## 🧰 Technologies
 
@@ -80,7 +97,7 @@ A download will come to your files
 
 <img width="893" height="547" alt="image" src="https://github.com/user-attachments/assets/ebd29f5c-0f9a-4413-ab67-97a3b8ab433e" />
 
-## 💻 Run Valkan
+## 📜 Run Valkan
 
 ### 1. List Itens
 When you arrive at the terminal, you will direct the terminal to where the Valkan file is and use the command:
@@ -113,12 +130,6 @@ To contribute:
 2. Create a branch with your changes.  
 3. Submit a pull request with a detailed description of your changes.
 
-## 📷 General Screenshot
-
-<img width="1329" height="863" alt="image" src="https://github.com/user-attachments/assets/2641ca31-d693-4d4d-95b4-6989bce280e4" />
-
-<img width="1034" height="729" alt="image" src="https://github.com/user-attachments/assets/fae332f9-36e4-4b42-b682-b29b81f1a13a" />
-
 
 ## 📄 License
 This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).  
@@ -129,8 +140,6 @@ See the [LICENSE](./LICENSE) file for details.
 - Contact the author via [GitHub](https://github.com/Vyzer9)
 
 <img width="351" height="383" alt="image" src="https://github.com/user-attachments/assets/1c883c12-9f16-4064-a752-40ed4edee172" />
-
-
 
 
 >⚠️ Final Notice:
