@@ -90,7 +90,8 @@ The architecture is **modular**, **concurrent**, and **extensible**, designed fo
 
 ### 1. Download in WebSIte
 
-<img width="933" height="469" alt="image" src="https://github.com/user-attachments/assets/91e08e61-8339-4279-84df-28fe1b0b360d" />
+<img width="1908" height="921" alt="image" src="https://github.com/user-attachments/assets/76743f15-846c-4cdf-8df3-ab2043ea1378" />
+
 
 ### 2. File Valkan
 A download will come to your files
