@@ -142,6 +142,7 @@ See the [LICENSE](./LICENSE) file for details.
 ## 📬 Contact
 - Contact the author via [GitHub](https://github.com/Vyzer9)
 
-<img width="351" height="383" alt="image" src="https://github.com/user-attachments/assets/1c883c12-9f16-4064-a752-40ed4edee172" />
+<img width="337" height="383" alt="image" src="https://github.com/user-attachments/assets/17c6c025-6b14-400a-919f-d42f313d2e15" />
+
 
 
