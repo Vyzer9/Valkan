@@ -44,7 +44,7 @@ https://valkan.vercel.app/
 
 ## 🧰 Technologies
 
-- **Language:** [Go (Golang)](https://golang.org) 
+- **Language:** [Go (Golang)](https://golang.org) and others
 
 - **Core Libraries & Modules:**
   - [`cobra`](https://github.com/spf13/cobra) – CLI framework for structured command-line interfaces
@@ -57,7 +57,7 @@ https://valkan.vercel.app/
   - [`runtime`](https://pkg.go.dev/runtime) – System architecture and OS detection
   - [`time`](https://pkg.go.dev/time) – Timeout handling, scan delays, and timestamping
 
-  [![My Skills](https://skillicons.dev/icons?i=golang,bash)](https://skillicons.dev)
+  [![My Skills](https://skillicons.dev/icons?i=golang,typescript,javascript,react,bash,vite)](https://skillicons.dev)
 
 ---
 
@@ -142,9 +142,4 @@ See the [LICENSE](./LICENSE) file for details.
 
 <img width="351" height="383" alt="image" src="https://github.com/user-attachments/assets/1c883c12-9f16-4064-a752-40ed4edee172" />
 
-
->⚠️ Final Notice:
->This project is intended for research, testing, and development purposes in controlled environments only.
->Do not use this code in production systems, unauthorized networks, or for malicious activities.
->The author explicitly disclaims any responsibility for misuse and condemns any form of unethical or illegal usage.
 
