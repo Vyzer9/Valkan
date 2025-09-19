@@ -11,8 +11,9 @@ import (
 	"time"
 
 	"github.com/Vyzer9/Valkan/Valkan/Internal/detection"
-	"github.com/Vyzer9/Valkan/Valkan/Internal/discovery" // importe o discovery aqui
+	"github.com/Vyzer9/Valkan/Valkan/Internal/discovery"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/plugins"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/recon" // import do recon adicionado
 	"github.com/Vyzer9/Valkan/Valkan/Internal/scanner"
 )
 
@@ -94,8 +95,9 @@ func ShowMenu() {
 		fmt.Println(Yellow + Bold + "Menu:" + Reset)
 		fmt.Println(Yellow + "1) Scanner" + Reset)
 		fmt.Println(Yellow + "2) Discovery" + Reset)
-		fmt.Println(Yellow + "3) Help" + Reset)
-		fmt.Println(Yellow + "4) Sair" + Reset)
+		fmt.Println(Yellow + "3) Recon (Subdomain Finder)" + Reset)
+		fmt.Println(Yellow + "4) Help" + Reset)
+		fmt.Println(Yellow + "5) Sair" + Reset)
 		fmt.Print(Reset + "Escolha uma opção: " + Reset)
 
 		input, _ := reader.ReadString('\n')
@@ -236,7 +238,6 @@ func ShowMenu() {
 			ctx := context.Background()
 			timeout := 2 * time.Second
 
-			// Agora com tcpPort como argumento
 			results, err := discovery.RunDiscovery(ctx, cidr, method, timeout, tcpPort)
 			if err != nil {
 				fmt.Println(Red + "Erro ao executar discovery: " + err.Error() + Reset)
@@ -257,6 +258,47 @@ func ShowMenu() {
 		case "4":
 			fmt.Println("Saindo...")
 			return
+
+		case "5":
+			fmt.Println(Yellow + "Iniciando Recon (Busca de Subdomínios)..." + Reset)
+
+			fmt.Print("Digite o domínio (ex: exemplo.com): ")
+			domain, _ := reader.ReadString('\n')
+			domain = strings.TrimSpace(domain)
+			if domain == "" {
+				fmt.Println(Red + "Domínio inválido." + Reset)
+				continue
+			}
+
+			fmt.Print("Digite o timeout em segundos (ex: 2): ")
+			timeoutStr, _ := reader.ReadString('\n')
+			timeoutStr = strings.TrimSpace(timeoutStr)
+			timeoutSec, err := time.ParseDuration(timeoutStr + "s")
+			if err != nil || timeoutSec <= 0 {
+				fmt.Println(Red + "Timeout inválido. Usando padrão 2 segundos." + Reset)
+				timeoutSec = 2 * time.Second
+			}
+
+			fmt.Print("Digite a concorrência (número de goroutines, ex: 10): ")
+			concurrencyStr, _ := reader.ReadString('\n')
+			concurrencyStr = strings.TrimSpace(concurrencyStr)
+			concurrency := 10
+			if concurrencyStr != "" {
+				fmt.Sscanf(concurrencyStr, "%d", &concurrency)
+				if concurrency <= 0 {
+					concurrency = 10
+				}
+			}
+
+			results := recon.FindSubdomains(domain, timeoutSec, concurrency)
+			if len(results) == 0 {
+				fmt.Println(Red + "Nenhum subdomínio encontrado ativo." + Reset)
+			} else {
+				fmt.Println(Green + "Subdomínios encontrados:" + Reset)
+				for _, res := range results {
+					fmt.Printf("Subdomínio: %s | IP: %s\n", res.Subdomain, res.IP)
+				}
+			}
 
 		default:
 			fmt.Println(Red + "Opção inválida, tente novamente." + Reset)
@@ -305,6 +347,10 @@ func showHelp() {
 
 4) Sair
    - Fecha o programa.
+
+5) Recon (Subdomain Finder)
+   - Realiza busca de subdomínios ativos para um domínio informado.
+   - Permite definir timeout e concorrência.
 
 Dicas:
 - Use IPs válidos (ex: 192.168.1.1) ou domínios (ex: example.com).
