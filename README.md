@@ -1,4 +1,4 @@
-# 🕵️‍♂️ Valkan
+# 🕵️‍♂️ Valkan - Network Scanner & Exploration Vulnerability
 ![Go](https://img.shields.io/badge/Made%20with-Go-00ADD8?logo=go&logoColor=white&style=for-the-badge)
 ![Cybersecurity](https://img.shields.io/badge/Focus-Cybersecurity-red?style=for-the-badge&logo=apache)
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge&logo=github)
@@ -20,6 +20,7 @@
 
 - [🎯 Objective](#-objective)
 - [🌐 Website](#-website)
+- [☁️ Features](#-features)
 - [🧰 Technologies WebSite](#-technologies-website)
 - [🧰 Technologies Tool](#-technologies-tool)
 - [🏗️ Architecture](#️-architecture)
@@ -43,12 +44,30 @@ This project provides a **functional tool** for:
 ## 🌐 Website
 https://valkan.vercel.app/
 
+The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future...
+
+## ☁️ Features
+- [x] Concurrent port scanning (TCP/UDP)
+- [x] Banner grabbing
+- [x] Firewall detection (silent)
+- [x] JSON and terminal reporting
+- [x] CLI interface with Cobra
+- [x] Web UI
+- [ ] OS fingerprinting (coming soon)
+- [ ] CVE matching (in development)
+- [ ] Web technology detection
+- [ ] Directory fuzzing
+- [ ] Scriptable engine (Go or Lua-based)
+- [ ] HTML and CSV export
+- [ ] Host discovery (ICMP, ARP, TCP ping)
+- [ ] Terminal UI (TUI)
+- [ ] Vulnerable configuration detection (e.g. anonymous FTP)
+
 ##  🧰 Technologies WebSite
+The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 The website was made with the languages: 
 
 [![My Skills](https://skillicons.dev/icons?i=typescript,javascript,nodejs,react,bun,vite,html,css,tailwind)](https://skillicons.dev)
-
-The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 
 ## 🧰 Technologies Tool
 
