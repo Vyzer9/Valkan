@@ -64,11 +64,10 @@ The website was designed with ease, focused on helping the community download an
 - [ ] Vulnerable configuration detection (e.g. anonymous FTP)
 
 ##  🧰 Technologies WebSite
+The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 The website was made with the languages: 
 
 [![My Skills](https://skillicons.dev/icons?i=typescript,javascript,nodejs,react,bun,vite,html,css,tailwind)](https://skillicons.dev)
-
-The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 
 ## 🧰 Technologies Tool
 
