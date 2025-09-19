@@ -20,10 +20,11 @@
 
 - [🎯 Objective](#-objective)
 - [🌐 Website](#-website)
-- [🧰 Technologies](#-technologies)
+- [🧰 Technologies WebSite](#-technologies-website)
+- [🧰 Technologies Tool](#-technologies-tool)
 - [🏗️ Architecture](#️-architecture)
 - [⚙️ Download](#️-download)
-- [📜 Run Valkan](#-run-valkan)
+- [🥷 Run Valkan](#-run-valkan)
 - [🤝 Contribution Guidelines](#-contribution-guidelines)
 - [📄 License](#-license)
 - [📬 Contact](#-contact)
@@ -42,9 +43,16 @@ This project provides a **functional tool** for:
 ## 🌐 Website
 https://valkan.vercel.app/
 
-## 🧰 Technologies
+##  🧰 Technologies WebSite
+The website was made with the languages: 
 
-- **Language:** [Go (Golang)](https://golang.org) 
+[![My Skills](https://skillicons.dev/icons?i=typescript,javascript,nodejs,react,bun,vite,html,css,tailwind)](https://skillicons.dev)
+
+The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
+
+## 🧰 Technologies Tool
+
+- **Language:** [Go (Golang)](https://golang.org) and others
 
 - **Core Libraries & Modules:**
   - [`cobra`](https://github.com/spf13/cobra) – CLI framework for structured command-line interfaces
@@ -92,13 +100,7 @@ The architecture is **modular**, **concurrent**, and **extensible**, designed fo
 
 <img width="1908" height="921" alt="image" src="https://github.com/user-attachments/assets/76743f15-846c-4cdf-8df3-ab2043ea1378" />
 
-
-### 2. File Valkan
-A download will come to your files
-
-<img width="893" height="547" alt="image" src="https://github.com/user-attachments/assets/ebd29f5c-0f9a-4413-ab67-97a3b8ab433e" />
-
-## 📜 Run Valkan
+## 🥷 Run Valkan
 
 ### 1. List Itens
 When you arrive at the terminal, you will direct the terminal to where the Valkan file is and use the command:
@@ -142,9 +144,4 @@ See the [LICENSE](./LICENSE) file for details.
 
 <img width="351" height="383" alt="image" src="https://github.com/user-attachments/assets/1c883c12-9f16-4064-a752-40ed4edee172" />
 
-
->⚠️ Final Notice:
->This project is intended for research, testing, and development purposes in controlled environments only.
->Do not use this code in production systems, unauthorized networks, or for malicious activities.
->The author explicitly disclaims any responsibility for misuse and condemns any form of unethical or illegal usage.
 
