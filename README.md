@@ -1,4 +1,4 @@
-# 🕵️‍♂️ Valkan
+# 🕵️‍♂️ Valkan - Network Scanner & Exploration Vulnerability
 ![Go](https://img.shields.io/badge/Made%20with-Go-00ADD8?logo=go&logoColor=white&style=for-the-badge)
 ![Cybersecurity](https://img.shields.io/badge/Focus-Cybersecurity-red?style=for-the-badge&logo=apache)
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge&logo=github)
@@ -46,7 +46,7 @@ https://valkan.vercel.app/
 
 The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future...
 
-## ☁️ Features 
+## ☁️ Features
 - [x] Concurrent port scanning (TCP/UDP)
 - [x] Banner grabbing
 - [x] Firewall detection (silent)
