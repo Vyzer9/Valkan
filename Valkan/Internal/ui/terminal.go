@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/Vyzer9/Valkan/Valkan/Internal/detection"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/discovery" // importe o discovery aqui
 	"github.com/Vyzer9/Valkan/Valkan/Internal/plugins"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/scanner"
 )
@@ -92,8 +93,9 @@ func ShowMenu() {
 		fmt.Println()
 		fmt.Println(Yellow + Bold + "Menu:" + Reset)
 		fmt.Println(Yellow + "1) Scanner" + Reset)
-		fmt.Println(Yellow + "2) Help" + Reset)
-		fmt.Println(Yellow + "3) Sair" + Reset)
+		fmt.Println(Yellow + "2) Discovery" + Reset)
+		fmt.Println(Yellow + "3) Help" + Reset)
+		fmt.Println(Yellow + "4) Sair" + Reset)
 		fmt.Print(Reset + "Escolha uma opção: " + Reset)
 
 		input, _ := reader.ReadString('\n')
@@ -196,9 +198,63 @@ func ShowMenu() {
 			}
 
 		case "2":
-			showHelp()
+			fmt.Println(Yellow + "Iniciando Discovery..." + Reset)
+
+			reader := bufio.NewReader(os.Stdin)
+
+			// Pedir CIDR para o usuário
+			fmt.Print("Digite a rede no formato CIDR (ex: 192.168.1.0/24): ")
+			cidr, _ := reader.ReadString('\n')
+			cidr = strings.TrimSpace(cidr)
+			if cidr == "" {
+				fmt.Println(Red + "CIDR inválido." + Reset)
+				continue
+			}
+
+			// Pedir método
+			fmt.Print("Digite o método (icmp/tcp): ")
+			method, _ := reader.ReadString('\n')
+			method = strings.TrimSpace(method)
+			if method != "icmp" && method != "tcp" {
+				fmt.Println(Red + "Método inválido." + Reset)
+				continue
+			}
+
+			// Se método for TCP, pedir porta
+			tcpPort := 80 // valor padrão
+			if method == "tcp" {
+				fmt.Print("Digite a porta TCP para testar (ex: 80): ")
+				portInput, _ := reader.ReadString('\n')
+				portInput = strings.TrimSpace(portInput)
+				_, err := fmt.Sscanf(portInput, "%d", &tcpPort)
+				if err != nil || tcpPort <= 0 || tcpPort > 65535 {
+					fmt.Println(Red + "Porta inválida." + Reset)
+					continue
+				}
+			}
+
+			ctx := context.Background()
+			timeout := 2 * time.Second
+
+			// Agora com tcpPort como argumento
+			results, err := discovery.RunDiscovery(ctx, cidr, method, timeout, tcpPort)
+			if err != nil {
+				fmt.Println(Red + "Erro ao executar discovery: " + err.Error() + Reset)
+			} else {
+				if len(results) == 0 {
+					fmt.Println(Yellow + "Nenhum host ativo encontrado." + Reset)
+				} else {
+					fmt.Println(Green + "Resultados do Discovery:" + Reset)
+					for _, res := range results {
+						fmt.Printf("IP: %s, Vivo: %t, Método: %s\n", res.IP, res.Alive, res.Method)
+					}
+				}
+			}
 
 		case "3":
+			showHelp()
+
+		case "4":
 			fmt.Println("Saindo...")
 			return
 
@@ -241,10 +297,13 @@ func showHelp() {
    - Busca portas abertas e tenta identificar serviços (apenas TCP).
    - Salva resultados em arquivo "resultados_scan.txt".
 
-2) Help
+2) Discovery
+   - Executa uma varredura de descoberta na rede (ex: ping sweep, hosts ativos).
+
+3) Help
    - Mostra este menu de ajuda.
 
-3) Sair
+4) Sair
    - Fecha o programa.
 
 Dicas:
