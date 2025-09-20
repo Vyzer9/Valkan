@@ -253,13 +253,6 @@ func ShowMenu() {
 			}
 
 		case "3":
-			showHelp()
-
-		case "4":
-			fmt.Println("Saindo...")
-			return
-
-		case "5":
 			fmt.Println(Yellow + "Iniciando Recon (Busca de Subdomínios)..." + Reset)
 
 			fmt.Print("Digite o domínio (ex: exemplo.com): ")
@@ -303,6 +296,13 @@ func ShowMenu() {
 		default:
 			fmt.Println(Red + "Opção inválida, tente novamente." + Reset)
 		}
+
+		case "4":
+			showHelp()
+
+		case "5":
+			fmt.Println("Saindo...")
+			return
 	}
 }
 
