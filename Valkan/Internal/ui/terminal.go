@@ -10,10 +10,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Vyzer9/Valkan/Valkan/Internal/apigeo"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/detection"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/discovery"
+	"github.com/Vyzer9/Valkan/Valkan/Internal/dnslookup"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/plugins"
-	"github.com/Vyzer9/Valkan/Valkan/Internal/recon" // import do recon adicionado
+	"github.com/Vyzer9/Valkan/Valkan/Internal/recon"
 	"github.com/Vyzer9/Valkan/Valkan/Internal/scanner"
 )
 
@@ -96,8 +98,10 @@ func ShowMenu() {
 		fmt.Println(Yellow + "1) Scanner" + Reset)
 		fmt.Println(Yellow + "2) Discovery" + Reset)
 		fmt.Println(Yellow + "3) Recon (Subdomain Finder)" + Reset)
-		fmt.Println(Yellow + "4) Help" + Reset)
-		fmt.Println(Yellow + "5) Sair" + Reset)
+		fmt.Println(Yellow + "4) IP Geolocation" + Reset)
+		fmt.Println(Yellow + "5) DNS Lookup avançado" + Reset)
+		fmt.Println(Yellow + "6) Help" + Reset)
+		fmt.Println(Yellow + "7) Sair" + Reset)
 		fmt.Print(Reset + "Escolha uma opção: " + Reset)
 
 		input, _ := reader.ReadString('\n')
@@ -252,6 +256,29 @@ func ShowMenu() {
 				}
 			}
 
+		case "4":
+			// Opção IP Geolocation
+			fmt.Print("Digite o IP para geolocalização: ")
+			ip, _ := reader.ReadString('\n')
+			ip = strings.TrimSpace(ip)
+			if ip == "" {
+				fmt.Println(Red + "IP inválido." + Reset)
+				continue
+			}
+
+			apigeo.IpGeolocation(ip)
+
+		case "5":
+			// Opção DNS Lookup avançado
+			dnsLookup()
+
+		case "6":
+			showHelp()
+
+		case "7":
+			fmt.Println("Saindo...")
+			return
+
 		case "3":
 			fmt.Println(Yellow + "Iniciando Recon (Busca de Subdomínios)..." + Reset)
 
@@ -292,13 +319,6 @@ func ShowMenu() {
 					fmt.Printf("Subdomínio: %s | IP: %s\n", res.Subdomain, res.IP)
 				}
 			}
-
-		case "4":
-			showHelp()
-
-		case "5":
-			fmt.Println("Saindo...")
-			return
 
 		default:
 			fmt.Println(Red + "Opção inválida, tente novamente." + Reset)
@@ -342,15 +362,23 @@ func showHelp() {
 2) Discovery
    - Executa uma varredura de descoberta na rede (ex: ping sweep, hosts ativos).
 
-3) Help
+3) Recon (Subdomain Finder)
+- Realiza busca de subdomínios ativos para um domínio informado.
+- Permite definir timeout e concorrência.
+
+4) IP Geolocation
+   - Consulta informações de geolocalização para um IP.
+
+5) DNS Lookup avançado
+   - Realiza consultas DNS detalhadas (A, AAAA, MX, TXT, NS, CNAME).
+
+6) Help
    - Mostra este menu de ajuda.
 
-4) Sair
+7) Sair
    - Fecha o programa.
 
-5) Recon (Subdomain Finder)
-   - Realiza busca de subdomínios ativos para um domínio informado.
-   - Permite definir timeout e concorrência.
+
 
 Dicas:
 - Use IPs válidos (ex: 192.168.1.1) ou domínios (ex: example.com).
@@ -360,4 +388,49 @@ Dicas:
 - Consulte a documentação para mais informações.
 
 `)
+}
+
+func dnsLookup() {
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Print("Digite o domínio para consulta DNS avançada: ")
+	domain, _ := reader.ReadString('\n')
+	domain = strings.TrimSpace(domain)
+
+	if domain == "" {
+		fmt.Println(Red + "Domínio inválido." + Reset)
+		return
+	}
+
+	// Contexto com timeout de 5 segundos
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	records, err := dnslookup.Lookup(ctx, domain)
+	if err != nil {
+		fmt.Println(Red + "Erro na consulta DNS: " + err.Error() + Reset)
+		return
+	}
+
+	fmt.Println(Green+"Resultados da consulta DNS para:", domain+Reset)
+
+	printRecords := func(recordType string, values []string) {
+		if len(values) == 0 {
+			fmt.Printf(Yellow+"[%s] Nenhum registro encontrado.\n"+Reset, recordType)
+		} else {
+			fmt.Printf(Green+"[%s] registros:\n"+Reset, recordType)
+			for _, val := range values {
+				fmt.Println("  -", val)
+			}
+		}
+	}
+
+	printRecords("A", records.A)
+	printRecords("AAAA", records.AAAA)
+	printRecords("MX", records.MX)
+	printRecords("TXT", records.TXT)
+	printRecords("NS", records.NS)
+	printRecords("CNAME", records.CNAME)
+
+	fmt.Println()
 }
