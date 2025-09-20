@@ -293,16 +293,16 @@ func ShowMenu() {
 				}
 			}
 
-		default:
-			fmt.Println(Red + "Opção inválida, tente novamente." + Reset)
-		}
-
 		case "4":
 			showHelp()
 
 		case "5":
 			fmt.Println("Saindo...")
 			return
+
+		default:
+			fmt.Println(Red + "Opção inválida, tente novamente." + Reset)
+		}
 	}
 }
 
