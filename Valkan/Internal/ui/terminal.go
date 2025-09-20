@@ -60,8 +60,8 @@ const valkanText = `
 
 func ShowBanner() {
 	fmt.Print(Red, Bold)
-	fmt.Println(valkanDragon)
-	fmt.Println(valkanText)
+	fmt.Print(valkanDragon)
+	fmt.Print(valkanText)
 	fmt.Print(Reset)
 
 	printSystemInfo()
@@ -188,7 +188,7 @@ func ShowMenu() {
 				fmt.Println(Yellow + "Nenhuma porta aberta encontrada." + Reset)
 			}
 
-			fmt.Println("Scan finalizado.\n")
+			fmt.Println("Scan finalizado.")
 
 			// Salvar resultados em arquivo
 			filename := "resultados_scan.txt"
@@ -329,7 +329,7 @@ func saveResultsToFile(results []scanner.PortScanResult, filename string) error 
 }
 
 func showHelp() {
-	fmt.Println(`
+	fmt.Print(`
 ` + Bold + `VALKAN - Network Recon Tool - Help` + Reset + `
 
 1) Scanner
