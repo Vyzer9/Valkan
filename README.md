@@ -125,6 +125,7 @@ The architecture is **modular**, **concurrent**, and **extensible**, designed fo
 When you arrive at the terminal, you will direct the terminal to where the Valkan file is and use the command:
 ```bash
 ls
+chmod +x ./Valkan
 ```
 This command is used to list items.
 
