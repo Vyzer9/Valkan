@@ -1,38 +1,29 @@
 # 🕵️‍♂️ Valkan - Network Scanner & Exploration Vulnerability
-![Go](https://img.shields.io/badge/Made%20with-Go-00ADD8?logo=go&logoColor=white&style=for-the-badge)
-![Cybersecurity](https://img.shields.io/badge/Focus-Cybersecurity-red?style=for-the-badge&logo=apache)
-![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge&logo=github)
-![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue?style=for-the-badge&logo=opensourceinitiative)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](LICENSE)
+[![Go Version](https://img.shields.io/badge/go-1.20%2B-blue.svg)](https://go.dev/)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows-lightgrey)
+![Status](https://img.shields.io/badge/type-cybersecurity--scanner-success)
+
 
 > ⚠️ **Disclaimer**  
-> **Valkan is a real and powerful tool**, designed specifically for **legitimate network scanning** and **vulnerability exploitation** in **controlled and authorized environments**.  
-> Its usage is strictly limited to **offensive security testing, ethical hacking, and auditing** with **explicit permission** from system owners.  
-> **Any unauthorized or illegal use is strictly prohibited** and may violate applicable laws, including the [Marco Civil da Internet (Law No. 12,965/2014)](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm).  
-> The author **bears no responsibility** for misuse, damages, or illegal activities resulting from this tool.
-
----
-
-<img width="1549" height="782" alt="image" src="https://github.com/user-attachments/assets/38f58661-15e7-471f-916a-e4f295c3361b" />
-
----
+> Valkan is a powerful tool intended solely for security testing and vulnerability exploitation in controlled environments and with explicit authorization. Unauthorized use is prohibited and may violate laws (e.g., Marco Civil); the author is not responsible for any misuse or damage.
 
 ## 📌 Table of Contents
 
-- [🎯 Objective](#-objective)
-- [🌐 Website](#-website)
-- [☁️ Features](#-features)
-- [🧰 Technologies WebSite](#-technologies-website)
-- [🧰 Technologies Tool](#-technologies-tool)
-- [🏗️ Architecture](#️-architecture)
-- [⚙️ Download](#️-download)
-- [🥷 Run Valkan](#-run-valkan)
-- [🤝 Contribution Guidelines](#-contribution-guidelines)
-- [📄 License](#-license)
-- [📬 Contact](#-contact)
+- [Objective](#-objective)
+- [Website](#-website)
+- [Features](#-features)
+- [Technologies WebSite](#-technologies-website)
+- [Technologies Tool](#-technologies-tool)
+- [Architecture](#️-architecture)
+- [Download](#️-download)
+- [Run Valkan](#-run-valkan)
+- [Contribution Guidelines](#-contribution-guidelines)
+- [License](#-license)
+- [Contact](#-contact)
 
----
 
-## 🎯 Objective
+## Objective
 
 This project provides a **functional tool** for:
 
@@ -41,12 +32,12 @@ This project provides a **functional tool** for:
 - Built in **Go (Golang)** for high performance, **concurrent scanning**, and low memory usage.
 - Designed for **real-world offensive security assessments** in authorized and controlled environments.
 
-## 🌐 Website
+## Website
 https://valkan.vercel.app/
 
 The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future...
 
-## ☁️ Features
+## Features
 - [x] Concurrent port scanning (TCP/UDP)
 - [x] Banner grabbing
 - [x] Firewall detection (silent)
@@ -63,13 +54,13 @@ The website was designed with ease, focused on helping the community download an
 - [ ] Terminal UI (TUI)
 - [ ] Vulnerable configuration detection (e.g. anonymous FTP)
 
-##  🧰 Technologies WebSite
+## Technologies WebSite
 The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 The website was made with the languages: 
 
 [![My Skills](https://skillicons.dev/icons?i=typescript,javascript,nodejs,react,bun,vite,html,css,tailwind)](https://skillicons.dev)
 
-## 🧰 Technologies Tool
+## Technologies Tool
 
 - **Language:** [Go (Golang)](https://golang.org) and others
 
@@ -88,7 +79,7 @@ The website was made with the languages:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The architecture is **modular**, **concurrent**, and **extensible**, designed for flexibility and performance in real-world security assessments:
 
@@ -113,13 +104,13 @@ The architecture is **modular**, **concurrent**, and **extensible**, designed fo
 - **📦 Future Web UI (In Development)**  
   A user-friendly web dashboard is under development (started on `2025-09-06`) for managing scans and visualizing results.
 
-## ⚙️ Download
+## Download
 
 ### 1. Download in WebSIte
 
 <img width="1908" height="921" alt="image" src="https://github.com/user-attachments/assets/76743f15-846c-4cdf-8df3-ab2043ea1378" />
 
-## 🥷 Run Valkan
+## Run Valkan
 
 ### 1. List Itens
 When you arrive at the terminal, you will direct the terminal to where the Valkan file is and use the command:
@@ -142,7 +133,7 @@ and finish, congratulations
 
 ---
 
-## 🤝 Contribution Guidelines
+## Contribution Guidelines
 
 Contributions are welcome, provided they align with the educational goals of the project.  
 If you find bugs, have ideas for improvements, or want to add features, feel free to contribute via pull requests.
@@ -154,12 +145,12 @@ To contribute:
 3. Submit a pull request with a detailed description of your changes.
 
 
-## 📄 License
+## License
 This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).  
 See the [LICENSE](./LICENSE) file for details.
 
 
-## 📬 Contact
+## Contact
 - Contact the author via [GitHub](https://github.com/Vyzer9)
 
 <img width="337" height="383" alt="image" src="https://github.com/user-attachments/assets/17c6c025-6b14-400a-919f-d42f313d2e15" />
