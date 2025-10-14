@@ -80,30 +80,28 @@ The website was made with the languages:
 
 The architecture is **modular**, **concurrent**, and **extensible**, designed for flexibility and performance in real-world security assessments:
 
-- **🔎 Scanner Module**  
+- **Scanner Module**  
   Performs port scanning (range: `1–1024` or `1–65535`) using concurrent routines for fast network enumeration.
 
-- **🧠 Detector Module**  
+- **Detector Module**  
   Analyzes open ports and services, performs banner grabbing, and identifies potential vulnerabilities or weak configurations.
 
-- **📝 Reporter Module**  
+- **Reporter Module**  
   Outputs results in structured formats (e.g., console, JSON), enabling easy parsing and documentation of scan results.
 
-- **🌐 HTTP Module**  
+- **HTTP Module**  
   Sends requests to web services to extract HTTP headers, status codes, server info, and other metadata.
 
-- **💻 CLI Interface**  
+- **CLI Interface**  
   Built with [`cobra`](https://github.com/spf13/cobra) to provide a clean and interactive command-line experience.
 
-- **⚙️ System Info Layer**  
+- **System Info Layer**  
   Detects system architecture, OS type, kernel version, and other relevant environment data.
 
-- **📦 Future Web UI (In Development)**  
+- **Future Web UI (In Development)**  
   A user-friendly web dashboard is under development (started on `2025-09-06`) for managing scans and visualizing results.
 
 ## Download
-
-### 1. Download in WebSIte
 
 <img width="1908" height="921" alt="image" src="https://github.com/user-attachments/assets/76743f15-846c-4cdf-8df3-ab2043ea1378" />
 
