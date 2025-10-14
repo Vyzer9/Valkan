@@ -33,8 +33,7 @@ This project provides a **functional tool** for:
 - Designed for **real-world offensive security assessments** in authorized and controlled environments.
 
 ## Website
-https://valkan.vercel.app/
-
+Here: [WebSite](https://valkan.vercel.app/)
 The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future...
 
 ## Features
@@ -58,7 +57,7 @@ The website was designed with ease, focused on helping the community download an
 The website is simple and purposefully designed as a tool, not a product meant to be displayed on display. If you'd like to contribute to the creation and updating of the website, send a message to Vyzer9.
 The website was made with the languages: 
 
-[![My Skills](https://skillicons.dev/icons?i=typescript,javascript,nodejs,react,bun,vite,html,css,tailwind)](https://skillicons.dev)
+- **Language:** TypeScript, JavaScript, Node.js, React, Bun, Vite, HTML, CSS, Tailwind
 
 ## Technologies Tool
 
@@ -74,8 +73,6 @@ The website was made with the languages:
   - [`encoding/json`](https://pkg.go.dev/encoding/json) – JSON output for structured reporting
   - [`runtime`](https://pkg.go.dev/runtime) – System architecture and OS detection
   - [`time`](https://pkg.go.dev/time) – Timeout handling, scan delays, and timestamping
-
-  [![My Skills](https://skillicons.dev/icons?i=golang,bash)](https://skillicons.dev)
 
 ---
 
@@ -153,7 +150,8 @@ See the [LICENSE](./LICENSE) file for details.
 ## Contact
 - Contact the author via [GitHub](https://github.com/Vyzer9)
 
-<img width="337" height="383" alt="image" src="https://github.com/user-attachments/assets/17c6c025-6b14-400a-919f-d42f313d2e15" />
+<img width="339" height="365" alt="image" src="https://github.com/user-attachments/assets/68f5e6aa-4046-48ed-aecb-1bdf71567bc4" />
+
 
 
 
