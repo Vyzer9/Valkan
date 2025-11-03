@@ -34,7 +34,7 @@ This project provides a **functional tool** for:
 
 ## Website
 Here: [WebSite](https://valkan.vercel.app/)
-The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future...
+The website was designed with ease, focused on helping the community download and install Valkan easily. Just click Download and Valkan will be ready to go. We'll be creating full documentation in the future....
 
 ## Features
 - [x] Concurrent port scanning (TCP/UDP)
